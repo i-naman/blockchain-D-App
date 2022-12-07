@@ -1,0 +1,60 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* height: 100%; */
+    height: calc(100vh - 67px);
+
+}
+
+.subNavHeaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 36px;
+    height: 36px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
+}
+
+.subNavHeaderLinksContainer {
+    height: 100%;
+    display: flex;
+    margin: 0 20px;
+    align-items: center;
+    justify-content: left;
+}
+
+.SubTabContentContainer {
+    display: flex;
+    flex: 1 1 auto;
+    min-height: 0px;
+}
+:global(.SubNavbarLink) {
+    display: inline;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #566271;
+    /* font-family: "ProximaNovaRegular"; */
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 17px;
+    margin-right: 40px;
+    text-decoration: none;
+    position: relative;
+}
+
+:global(.SubNavbarLinkActive) {
+    /* font-family: 'ProximaNovaSemiBold'; */
+}
+
+:global(.SubNavbarLink.SubNavbarLinkActive::after)  {
+    content: "";
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    border-width: 0 0 3px;
+    border-style: solid;
+    border-color: #011C48;
+}
