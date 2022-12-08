@@ -67,7 +67,7 @@ const NFT = (props: IPropsWeb3) => {
     const transferNft = async () => {
         try {
             const [account, ...accs] = await web3.eth.getAccounts();
-            const res: string = await contract.methods.safeTransferFrom(account, inputId3, inputId4).call();
+            const res: string = await contract.methods.safeTransferFrom(account, inputId3, inputId4).send({ from: account, value: 0 });
             showToastUtil({ status: TOAST_TYPE.SUCCESS, message: `Trasferred Token ID: ${inputId4} ownership successfully!` });
         } catch (e) {
             showToastUtil({ status: TOAST_TYPE.ERROR });
@@ -121,6 +121,11 @@ const NFT = (props: IPropsWeb3) => {
                 <input value={uri} placeholder='Enter Asset URI' onChange={e => setUri(e.target.value.trim())} ></input>
                 <button onClick={() => mintNft()}>{'Mint your own NFT!'}</button>
                 <div>{'(We recommend you to use a IPFS asset URI)'}</div>
+            </div>
+            <div className={styles.Row}>
+                <input value={inputId3} placeholder='Enter Recipient ID' onChange={e => setInputId3(e.target.value.trim())} ></input>
+                <input value={inputId4} placeholder='Enter your TYF NFT Token ID' onChange={e => setInputId4(e.target.value.trim())} ></input>
+                <button onClick={() => transferNft()}>{'Transfer Ownership of your NFT!'}</button>
             </div>
         </div>
     </>);

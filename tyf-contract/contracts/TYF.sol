@@ -11,7 +11,7 @@ contract TYF is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIdCounter;
     uint256 public MAX_SUPPLY = 1000000; // Max supply of NFT
-    uint256 public MAX_SUPPLY_USER = 2; // per user
+    uint256 public MAX_SUPPLY_USER = 10; // per user
     mapping(address => uint256) public contributions;
     uint256 public totalContributors;
     uint256 public minimumContribution;
@@ -44,12 +44,18 @@ contract TYF is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
     }
 
     function safeMint(address to, string memory uri) public contributor {
-        require(balanceOf(msg.sender) < MAX_SUPPLY_USER, "Max Mint per wallet reached");
-        require(_tokenIdCounter.current() <= (MAX_SUPPLY), "I'm sorry we reached the cap");
+        require(balanceOf(msg.sender) < MAX_SUPPLY_USER);
+        require(_tokenIdCounter.current() <= (MAX_SUPPLY));
         uint256 tokenId = _tokenIdCounter.current();
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
         _tokenIdCounter.increment();
+    }
+
+    function transferNFT(address from, address to, uint256 tokenId) public contributor {
+        require(contributions[to] > 0);
+        require(balanceOf(to) < MAX_SUPPLY_USER);
+        safeTransferFrom(from, to, tokenId);
     }
 
     function contribute() public payable {
