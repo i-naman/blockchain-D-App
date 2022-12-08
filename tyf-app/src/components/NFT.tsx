@@ -85,7 +85,7 @@ const NFT = (props: IPropsWeb3) => {
             showToastUtil({ status: TOAST_TYPE.SUCCESS, message: 'Minted successfully!' });
             getNftData();
         } catch (e) {
-            showToastUtil({ status: TOAST_TYPE.ERROR });
+            showToastUtil({ status: TOAST_TYPE.ERROR, message: 'Sorry! Encountered an error.\n(Please ensure you have contributed on TYF to be eligible to mint on our blockchain.)' });
             console.error(e);
         }
     }
