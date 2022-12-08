@@ -22,7 +22,7 @@ const ComingSoon = (props: IPropsWeb3) => {
     return (<>
         <div className={styles.Container}>
             <div className={styles.Row}>
-                <div>{`More Rewards and custom NFTs for TYF contributors with TYF branding`}</div>
+                <div>{`More Exciting Rewards and custom NFTs for TYF contributors coming soon`}</div>
             </div>
             <div className={styles.Row}>
                 <div>{`Transfering NFT Ownership`}</div>
