@@ -7,43 +7,55 @@ import Campaign from './Campaign';
 import Contribute from './Contribute';
 import Requests from './Requests';
 import Admin from './Admin';
+import { Toaster } from 'react-hot-toast';
+import NFT from './NFT';
+import ComingSoon from './ComingSoon';
 
-const activeNavLinkClass = "SubNavbarLinkActive";
-const navLinkClass = "SubNavbarLink";
 export const RouteUrls = {
     Root: "/",
     Campaign: "campaign",
     Contribute: "contribute",
     Requests: "requests",
     Admin: "admin",
-    // Temp: "temp"
+    Mint: "mint",
+    Next: "next",
 };
 
+const navLinkClasses = {
+    activeClassName: 'SubNavbarLinkActive',
+    className: 'SubNavbarLink'
+}
 const NavLinks: NavBarLinkProps[] = [
     {
+        ...navLinkClasses,
         text: "Campaign Info",
         to: RouteUrls.Campaign,
-        activeClassName: activeNavLinkClass,
-        className: navLinkClass
     },
     {
+        ...navLinkClasses,
         text: "Contribute",
         to: RouteUrls.Contribute,
-        activeClassName: activeNavLinkClass,
-        className: navLinkClass
     },
     {
+        ...navLinkClasses,
         text: "Approve Requests",
         to: RouteUrls.Requests,
-        activeClassName: activeNavLinkClass,
-        className: navLinkClass
+    },
+    {
+        ...navLinkClasses,
+        text: "TYF NFTs",
+        to: RouteUrls.Mint,
+    },
+    {
+        ...navLinkClasses,
+        text: "Coming Soon (Beta)",
+        to: RouteUrls.Next,
     }
 ];
 const AdminLink: NavBarLinkProps = {
+    ...navLinkClasses,
     text: "Admin",
     to: RouteUrls.Admin,
-    activeClassName: activeNavLinkClass,
-    className: navLinkClass
 }
 
 
@@ -54,6 +66,8 @@ const SubPages = (params: IPropsWeb3 & {isAdmin: boolean}) => {
             <Route path={RouteUrls.Campaign} element={<Campaign {...props}></Campaign>} />
             <Route path={RouteUrls.Contribute} element={<Contribute {...props}></Contribute>} />
             <Route path={RouteUrls.Requests} element={<Requests {...props}></Requests>} />
+            <Route path={RouteUrls.Mint} element={<NFT {...props}></NFT>} />
+            <Route path={RouteUrls.Next} element={<ComingSoon {...props}></ComingSoon>} />
             {isAdmin && <Route path={RouteUrls.Admin} element={<Admin {...props}></Admin>} />}
             <Route path={`${RouteUrls.Root}*`} element={<Navigate to={RouteUrls.Contribute} replace={true} />} />
         </Routes>
@@ -89,6 +103,7 @@ const AppRouter = (props: IPropsWeb3) => {
             <div className={styles.SubTabContentContainer}>
                 <SubPages {...props} isAdmin={isAdmin} />
             </div>
+            <Toaster />
 
         </div>
     </>);

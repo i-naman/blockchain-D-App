@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IPropsWeb3 } from '../interfaces';
 import styles from '../styles/Component.module.css';
+import { showToastUtil, TOAST_TYPE } from './ToastUtil';
 
 const Admin = (props: IPropsWeb3) => {
     const { contract, web3 } = props;
@@ -13,7 +14,9 @@ const Admin = (props: IPropsWeb3) => {
             const ethers = web3.utils.toWei(amt, 'wei');
             const [account, ...accs] = await web3.eth.getAccounts();
             await contract.methods.createSpendingRequest(desc, recipient, ethers).send({ from: account, value: 0 });
+            showToastUtil({ status: TOAST_TYPE.SUCCESS, message: 'Completed successfully!' });
         } catch (e) {
+            showToastUtil({ status: TOAST_TYPE.ERROR });
             console.error(e);
         }
     }
@@ -23,7 +26,9 @@ const Admin = (props: IPropsWeb3) => {
         try {
             const [account, ...accs] = await web3.eth.getAccounts();
             await contract.methods.makePayment(parseInt(reqID)).send({ from: account, value: 0 });
+            showToastUtil({ status: TOAST_TYPE.SUCCESS, message: 'Completed successfully!' });
         } catch (e) {
+            showToastUtil({ status: TOAST_TYPE.ERROR });
             console.error(e);
         }
     }

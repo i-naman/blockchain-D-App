@@ -2,7 +2,7 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 
 const __MEMONIC__ = "ritual cricket pig chase street coach insane lens distance dynamic point smile";
-const __INFURA_KEY__ = "https://goerli.infura.io/v3/750dfaea0d1e43dd9dd3df0055034cdc";
+const __INFURA_KEY__ = "https://goerli.infura.io/v3/ed91865f4c594eb796568aba3d5151f2";
 
 module.exports = {
 
