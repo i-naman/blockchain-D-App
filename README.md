@@ -40,6 +40,7 @@ The third section contains a list of validations (modifiers).
 The fourth section contains a list of all the functions in the smart contract.
 
 Following is the contract diagram:
+```
 ------------------------------------------------------------------------------------------------------------
 #### TYF
 ------------------------------------------------------------------------------------------------------------
@@ -86,7 +87,7 @@ voteForRequest (uint256 index)
 
 makePayment (uint256 index)
 ------------------------------------------------------------------------------------------------------------
-
+```
 ### Architecture Diagram:
 
 We have all the users of the application, namely the admin, donors and recipients in any public network.
