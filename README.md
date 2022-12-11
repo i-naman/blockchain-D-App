@@ -177,9 +177,7 @@ document.
 - transferNFT (address from, address to, uint256 tokenId) contributor
 
 
-### End-to-End Instructions to Compile, Build and Deploy the TYF
-
-### D-Application as your own D-Application:
+### End-to-End Instructions to Compile, Build and Deploy the TYF D-Application as your own D-Application:
 
 - Pre Requisites to be installed:
     o Browser with Metamask Plugin (recommended: https://www.mozilla.org/en-
